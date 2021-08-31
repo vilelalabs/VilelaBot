@@ -33,6 +33,8 @@ const client = new tmi.client(opts);
 // Manipuladores de eventos
 client.on('message', onMessageHandler);
 client.on('connected', onConnectedHandler);
+
+// chama função sh (Stream Hollics) ------------
 client.on('join', (channel, username, self) => {
     try {
         sh.onJoin(username, client);
@@ -57,25 +59,21 @@ function onMessageHandler(target, context, msg, self) {
         return;
     }
 
-
     // limpa espaços vazios na mensagem
     const commandName = msg.trim();
-
 
     // Lê texto com o tts
     tts.LerTexto(commandName, context, client);
 
     // chama 'EasterEggs' --------------------------
-    //chama função tabuada
     other.tabuada(target, msg, commandName, client);
-    //chama função hello
     other.hello(target, msg, commandName, client);
-    //chama função prime
-    other.prime(target, msg, commandName, client);
-    //chama função hub
-    other.hub(target, msg, commandName, client);
+    other.gato(target, msg, commandName, client);
 
-    // chama função sh (Stream Hollics) -------------------------
+    //chama funções básicas
+    other.basicMsgs(target, msg, commandName, client);
+
+    
 
 }
 // Chamado toda vez que o bot se conecta à twitch
