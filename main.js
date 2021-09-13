@@ -13,7 +13,7 @@ const tts = require('./modules/tts')
 var ad_start = false; //Habilita/Desabilita ads automaticos
 
 var BOT_USERNAME = 'vilelabot'
-var CHANNEL_NAME = 'vilelalabs'
+var CHANNEL_NAME = 'vilelalabs' //'wikiknow'
 var OAUTH_TOKEN = auth.getAuth('twitch');
 
 // Define opções de configuração
@@ -23,7 +23,7 @@ const opts = {
         password: OAUTH_TOKEN
     },
     channels: [
-        CHANNEL_NAME
+        CHANNEL_NAME,
     ]
 };
 
@@ -73,7 +73,7 @@ function onMessageHandler(target, context, msg, self) {
     //chama funções básicas
     other.basicMsgs(target, msg, commandName, client);
 
-    
+
 
 }
 // Chamado toda vez que o bot se conecta à twitch

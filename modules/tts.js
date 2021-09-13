@@ -46,7 +46,7 @@ function LerTexto(comando, context, client) {
 function TocarSom() {
     try {
         setTimeout(() => {
-            sound.play(`${__dirname}/../recursos/audio.mp3`);
+            sound.play(`${__dirname}/../recursos/audio.mp3`, 1);
         }, 4800);
         console.log("> Áudio tocado com sucesso!");
     } catch (error) {
