@@ -8,7 +8,8 @@ const auth = require('./modules/auth');      // arquivo contendo as autenticaç�
 const other = require('./modules/other');
 const sh = require('./modules/sh');
 const ad = require('./modules/ad');
-const tts = require('./modules/tts')
+const tts = require('./modules/tts');
+const anota = require('./modules/anota');
 
 var ad_start = false; //Habilita/Desabilita ads automaticos
 
@@ -33,6 +34,7 @@ const client = new tmi.client(opts);
 // Manipuladores de eventos
 client.on('message', onMessageHandler);
 client.on('connected', onConnectedHandler);
+client.on('disconnected', onDisconnectedHandler);
 
 // chama função sh (Stream Hollics) ------------
 client.on('join', (channel, username, self) => {
@@ -73,7 +75,8 @@ function onMessageHandler(target, context, msg, self) {
     //chama funções básicas
     other.basicMsgs(target, msg, commandName, client);
 
-
+    //chama anota
+    anota.addAnotacao(target, context.username, commandName, client);
 
 }
 // Chamado toda vez que o bot se conecta à twitch
@@ -84,4 +87,8 @@ function onConnectedHandler(addr, port) {
     } catch (error) {
         console.log("Erro ao conectar. ERRO:", error);
     }
+}
+
+function onDisconnectedHandler() {
+    anota.closeDB();
 }
