@@ -79,12 +79,17 @@ function onMessageHandler(target, context, msg, self) {
     anota.addAnotacao(target, context.username, commandName, client);
     anota.lerAnotacoes(context.username, commandName);
 
+    //chama funções relacionadas ao sh
+    sh.addSH(context.username, commandName, target, client);
+    sh.delSH(context.username, commandName, target, client);
+
 }
 // Chamado toda vez que o bot se conecta à twitch
 function onConnectedHandler(addr, port) {
     try {
         console.log(`* Connected to ${addr}:${port}`);
         ad_start = true;
+        sh.startSH();
     } catch (error) {
         console.log("Erro ao conectar. ERRO:", error);
     }
@@ -92,4 +97,5 @@ function onConnectedHandler(addr, port) {
 
 function onDisconnectedHandler() {
     anota.closeDB();
+    sh.closeDB();
 }
