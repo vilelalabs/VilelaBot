@@ -1,4 +1,5 @@
 exports.addAnotacao = addAnotacao;
+exports.lerAnotacoes = lerAnotacoes;
 exports.closeDB = closeDB;
 
 var sqlite3 = require('sqlite3').verbose();
@@ -19,18 +20,28 @@ function addAnotacao(target, username, mensagem, client) {
                 //INSERE NOVOS VALORES NA TABELA
                 db.run(`INSERT INTO anota VALUES ('${username}','${anotacao}')`);
 
-
-                // VISUALIZA RESULTADOS
-                db.each("SELECT rowid AS id, user, info FROM anota", function (err, row) {
-                    console.log(`${row.id} |${row.user}| ${row.info}`);
-                });
             });
 
-            client.say(target, `Obrigado! Incluí sua dica na minha lista de anotações!`);
+            client.say(target, `Valeu! Incluí sua dica na minha lista de anotações!`);
 
         }
     }
 }
+
+function lerAnotacoes(username, mensagem) {
+
+    if (username !== 'vilelalabs')
+        return;
+    // faz tratamento da mensagem
+    if (mensagem === `!lernotas`) {
+
+        // VISUALIZA RESULTADOS
+        db.each("SELECT rowid AS id, user, info FROM anota", function (err, row) {
+            console.log(`${row.id} |${row.user}| ${row.info}`);
+        });
+    }
+}
+
 function closeDB() {
     db.close();
 }

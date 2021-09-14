@@ -2,7 +2,8 @@ package-lock.json
 node_modules/
 out/
 backup/
-recursos/
+recursos/*
+
 
 auth.js
 modules/auth.js

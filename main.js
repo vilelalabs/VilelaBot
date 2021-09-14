@@ -75,8 +75,9 @@ function onMessageHandler(target, context, msg, self) {
     //chama funções básicas
     other.basicMsgs(target, msg, commandName, client);
 
-    //chama anota
+    //chama funções relacionadas a anotações
     anota.addAnotacao(target, context.username, commandName, client);
+    anota.lerAnotacoes(context.username, commandName);
 
 }
 // Chamado toda vez que o bot se conecta à twitch
