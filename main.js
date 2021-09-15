@@ -64,6 +64,9 @@ function onMessageHandler(target, context, msg, self) {
     // limpa espaços vazios na mensagem
     const commandName = msg.trim();
 
+    if (commandName == "!closedb")
+        sh.closeDB();
+
     // Lê texto com o tts
     tts.LerTexto(commandName, context, client);
 
@@ -78,6 +81,7 @@ function onMessageHandler(target, context, msg, self) {
     //chama funções relacionadas a anotações
     anota.addAnotacao(target, context.username, commandName, client);
     anota.lerAnotacoes(context.username, commandName);
+    anota.apagaAnotacoes(context.username, commandName);
 
     //chama funções relacionadas ao sh
     sh.addSH(context.username, commandName, target, client);
