@@ -1,7 +1,6 @@
 exports.tabuada = tabuada;
 exports.hello = hello;
 exports.gato = gato;
-exports.basicMsgs = basicMsgs;
 
 // funções de Easter Eggs --------------------------------------------------------------------
 
@@ -46,21 +45,4 @@ function gato(alvo, mensagem, comando, client) {
         client.say(alvo, '⣿⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀ ⣿⣿⣿⠟⠛⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢋⣩⣉⢻  ⣿⣿⣿⠀⣿⣶⣕⣈⠹⠿⠿⠿⠿⠟⠛⣛⢋⣰⠣⣿⣿⠀⣿  ⣿⣿⣿⡀⣿⣿⣿⣧⢻⣿⣶⣷⣿⣿⣿⣿⣿⣿⠿⠶⡝⠀⣿  ⣿⣿⣿⣷⠘⣿⣿⣿⢏⣿⣿⣋⣀⣈⣻⣿⣿⣷⣤⣤⣿⡐⢿  ⣿⣿⣿⣿⣆⢩⣝⣫⣾⣿⣿⣿⣿⡟⠿⠿⠦⠀⠸⠿⣻⣿⡄⢻  ⣿⣿⣿⣿⣿⡄⢻⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⠇⣼  ⣿⣿⣿⣿⣿⣿⡄⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣰  ⣿⣿⣿⣿⣿⣿⠇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢀⣿  ⣿⣿⣿⣿⣿⠏⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿  ⣿⣿⣿⣿⠟⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿  ⣿⣿⣿⠋⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⣿  ⣿⣿⠋⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸  ⣿⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿');
         return;
     }
-}
-
-// funções básicas do bot --------------------------------------------------------------------
-
-function basicMsgs(alvo, mensagem, comando, client) {
-
-    if (comando == "!prime" || comando == "!Prime") {
-        client.say(alvo, '1. Acesse https://gaming.amazon.com |-| 2. Faca login na sua conta da amazon.com.br |-| 3. Selecione vincular conta da Twitch |-| 4. Faca login na sua conta da Twitch e selecione Confirmar. |-| 5. aqui no canal Henrique Vilela Music, clique em Inscrever-se!');
-        return;
-    }
-    else if (comando == "!hub" || comando == "!Hub") {
-        client.say(alvo, `Conheça a HUB: https://discord.gg/ahubtech`);
-        return;
-    }
-    //else if ...
-
-    //add new basic messages (just Question and Answer) ...
 }

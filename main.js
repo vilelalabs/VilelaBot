@@ -10,6 +10,7 @@ const sh = require('./modules/sh');
 const ad = require('./modules/ad');
 const tts = require('./modules/tts');
 const anota = require('./modules/anota');
+const basics = require('./modules/basics');
 
 var ad_start = false; //Habilita/Desabilita ads automaticos
 
@@ -52,7 +53,7 @@ function onMessageHandler(target, context, msg, self) {
 
     //para rodar ads automaticamente
     if (ad_start) {
-        ad.RodarAd(30, 20);
+        ad.RodarAd(30, 60);
         console.log('Iniciando ads automaticos');
         ad_start = false;
     }
@@ -76,7 +77,7 @@ function onMessageHandler(target, context, msg, self) {
     other.gato(target, msg, commandName, client);
 
     //chama funções básicas
-    other.basicMsgs(target, msg, commandName, client);
+    basics.basicMsgs(target, msg, commandName, client);
 
     //chama funções relacionadas a anotações
     anota.addAnotacao(target, context.username, commandName, client);
