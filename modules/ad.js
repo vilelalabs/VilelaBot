@@ -13,6 +13,7 @@ const auth = require('./auth');
 const axios = require('axios').default;
 
 async function RodarAd(ad_time_sec, ad_interval_min) {
+
     setInterval(async () => {
         let options = {
             headers: {

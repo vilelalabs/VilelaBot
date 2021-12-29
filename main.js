@@ -52,11 +52,11 @@ client.connect();
 function onMessageHandler(target, context, msg, self) {
 
     //para rodar ads automaticamente
-    if (ad_start) {
+    /*if (ad_start) {
         ad.RodarAd(30, 60);
         console.log('Iniciando ads automaticos');
         ad_start = false;
-    }
+    }*/
 
     if (self) {
         return;
