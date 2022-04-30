@@ -21,6 +21,16 @@ function basicMsgs(target, mensagem, comando, client) {
             resposta = `https://discord.gg/ahubtech`
 
         ],
+        [
+            aliases = ["brstreamers"],
+            resposta = `https://brstreamers.dev/`
+
+        ],
+        [
+            aliases = ["discord", "disc"],
+            resposta = `https://discord.gg/zhVns4Yt`
+
+        ],
 
         //add new basic messages (just Question and Answer) ...
     ];
