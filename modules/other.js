@@ -1,7 +1,3 @@
-exports.tabuada = tabuada;
-exports.hello = hello;
-exports.gato = gato;
-
 // funções de Easter Eggs --------------------------------------------------------------------
 
 function tabuada(alvo, mensagem, comando, client) {
@@ -41,8 +37,35 @@ function hello(alvo, mensagem, comando, client) {
     }
 }
 function gato(alvo, mensagem, comando, client) {
-    if (comando == "!gatinho" || comando == "!gato") {
+    if (comando == "!gatinho" || comando == "!gato" || comando == "!cat") {
         client.say(alvo, '⣿⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀ ⣿⣿⣿⠟⠛⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢋⣩⣉⢻  ⣿⣿⣿⠀⣿⣶⣕⣈⠹⠿⠿⠿⠿⠟⠛⣛⢋⣰⠣⣿⣿⠀⣿  ⣿⣿⣿⡀⣿⣿⣿⣧⢻⣿⣶⣷⣿⣿⣿⣿⣿⣿⠿⠶⡝⠀⣿  ⣿⣿⣿⣷⠘⣿⣿⣿⢏⣿⣿⣋⣀⣈⣻⣿⣿⣷⣤⣤⣿⡐⢿  ⣿⣿⣿⣿⣆⢩⣝⣫⣾⣿⣿⣿⣿⡟⠿⠿⠦⠀⠸⠿⣻⣿⡄⢻  ⣿⣿⣿⣿⣿⡄⢻⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⠇⣼  ⣿⣿⣿⣿⣿⣿⡄⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣰  ⣿⣿⣿⣿⣿⣿⠇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢀⣿  ⣿⣿⣿⣿⣿⠏⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿  ⣿⣿⣿⣿⠟⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿  ⣿⣿⣿⠋⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⣿  ⣿⣿⠋⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸  ⣿⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿');
         return;
     }
 }
+
+function ttsList(alvo, mensagem, comando, client) {
+    if (comando == "!ttslist") {
+        client.say(alvo,
+            `
+            'af': 'Afrikaans', 'sq': 'Albânio', 'ar': 'Árabe', 'hy': 'Armênio', 'ca': 'Catalão', 'zh': 'Chinês',
+                'hr': 'Croata', 'cs': 'Tcheco', 'da': 'Dinamarquês', 'nl': 'Holandês', 'en': 'Inglês', 'eo': 'Esperanto',
+                'fi': 'Finlandês', 'fr': 'Francês', 'de': 'Alemão', 'el': 'Grego', 'hi': 'Hindu', 'hu': 'Húngaro',
+                'is': 'Islandês', 'id': 'Indonésio', 'it': 'Italiano', 'ja': 'Japonês', 'ko': 'Coreano', 'la': 'Latim'
+            `);
+        client.say(alvo,
+            `
+                'lv': 'Letão', 'mk': 'Macedoniano', 'no': 'Norueguês', 'pl': 'Polonês', 'pt': 'Português', 'ro': 'Romeno',
+                'ru': 'Russo', 'sr': 'Sérvio', 'sk': 'Eslovaco', 'es': 'Espanhol', 'sw': 'Suaíli', 'sv': 'Sueco',
+                'ta': 'Tâmil', 'th': 'Tailandês', 'tr': 'Turco', 'vi': 'Vietnamita', 'cy': 'Galês'`
+        );
+        return;
+    }
+}
+
+
+module.exports = {
+    tabuada,
+    hello,
+    gato,
+    ttsList
+};

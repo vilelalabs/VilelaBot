@@ -75,6 +75,7 @@ function onMessageHandler(target, context, msg, self) {
     other.tabuada(target, msg, commandName, client);
     other.hello(target, msg, commandName, client);
     other.gato(target, msg, commandName, client);
+    other.ttsList(target, msg, commandName, client);
 
     //chama funções básicas
     basics.basicMsgs(target, msg, commandName, client);

@@ -1,9 +1,14 @@
 {
+  "scripts":{
+    "start":"node main.js"
+},
+
   "dependencies": {
     "axios": "^0.21.1",
     "gtts": "^0.2.1",
+    "play-sound": "^1.1.5",
     "sound-play": "^1.1.0",
-    "sqlite3": "^5.0.2",
+    "sqlite3": "^5.0.10",
     "tmi.js": "^1.8.5"
   }
 }

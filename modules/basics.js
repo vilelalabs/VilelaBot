@@ -10,7 +10,7 @@ function basicMsgs(target, mensagem, comando, client) {
     const allCommands = [
         [
             aliases = ["prime", "pr", "pm"],
-            resposta = '1. Acesse https://gaming.amazon.com |-| 2. Faca login na sua conta da amazon.com.br |-| 3. Selecione vincular conta da Twitch |-| 4. Faca login na sua conta da Twitch e selecione Confirmar. |-| 5. aqui no canal Henrique Vilela Music, clique em Inscrever-se!'
+            resposta = '1. Acesse https://gaming.amazon.com |-| 2. Faca login na sua conta da amazon.com.br |-| 3. Selecione vincular conta da Twitch |-| 4. Faca login na sua conta da Twitch e selecione Confirmar. |-| 5. aqui no canal VilelaLabs, clique em Inscrever-se!'
         ],
         [
             aliases = ["comandos", "cmds", "comandos", "cmd"],
@@ -24,11 +24,6 @@ function basicMsgs(target, mensagem, comando, client) {
         [
             aliases = ["brstreamers"],
             resposta = `https://brstreamers.dev/`
-
-        ],
-        [
-            aliases = ["discord", "disc"],
-            resposta = `https://discord.gg/zhVns4Yt`
 
         ],
 

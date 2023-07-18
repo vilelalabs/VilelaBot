@@ -69,6 +69,8 @@ function delSH(username, mensagem, target, client) {
 }
 
 function startSH() {
+
+
     //limpa o array de streamers
     streamers = [];
 
