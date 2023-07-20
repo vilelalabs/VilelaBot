@@ -1,28 +1,17 @@
 
 const gTTS = require('gtts');
-var player = require('play-sound')(opts = {'powershell': true});
-
-//usando para converter texto para áudio
-var gtts;
-
+const { exec } = require('child_process');
 
 //supported languages
 /*
-'af': 'Afrikaans', 'sq': 'Albanian', 'ar': 'Arabic', 'hy': 'Armenian', 'ca': 'Catalan', 'zh': 'Chinese',
-    'hr': 'Croatian', 'cs': 'Czech', 'da': 'Danish', 'nl': 'Dutch', 'en': 'English', 'eo': 'Esperanto',
-    'fi': 'Finnish', 'fr': 'French', 'de': 'German', 'el': 'Greek', 'hi': 'Hindi', 'hu': 'Hungarian',
-    'is': 'Icelandic', 'id': 'Indonesian', 'it': 'Italian', 'ja': 'Japanese', 'ko': 'Korean', 'la': 'Latin',
-    'lv': 'Latvian', 'mk': 'Macedonian', 'no': 'Norwegian', 'pl': 'Polish', 'pt': 'Portuguese', 'ro': 'Romanian',
-    'ru': 'Russian', 'sr': 'Serbian', 'sk': 'Slovak', 'es': 'Spanish', 'sw': 'Swahili', 'sv': 'Swedish',
-    'ta': 'Tamil', 'th': 'Thai', 'tr': 'Turkish', 'vi': 'Vietnamese', 'cy': 'Welsh'
+    'af': 'Afrikaans', 'sq': 'Albanian',     'ar': 'Arabic',    'hy': 'Armenian',   'ca': 'Catalan',    'zh': 'Chinese',
+    'hr': 'Croatian',  'cs': 'Czech',        'da': 'Danish',    'nl': 'Dutch',      'en': 'English',    'eo': 'Esperanto',
+    'fi': 'Finnish', ' 'fr': 'French',       'de': 'German',    'el': 'Greek',      'hi': 'Hindi',      'hu': 'Hungarian',
+    'is': 'Icelandic', 'id': 'Indonesian',   'it': 'Italian',   'ja': 'Japanese',   'ko': 'Korean',     'la': 'Latin',
+    'lv': 'Latvian',   'mk': 'Macedonian',   'no': 'Norwegian', 'pl': 'Polish',     'pt': 'Portuguese', 'ro': 'Romanian',
+    'ru': 'Russian',   'sr': 'Serbian',      'sk': 'Slovak',    'es': 'Spanish',    'sw': 'Swahili',    'sv': 'Swedish',
+    'ta': 'Tamil',     'th': 'Thai',         'tr': 'Turkish',   'vi': 'Vietnamese', 'cy': 'Welsh'
 */
-const languages = [
-    'af', 'ar', 'ca', 'cs', 'da', 'nl', 'en', 'fi',
-    'fr', 'de', 'el', 'hu', 'is', 'id', 'it', 'lv',
-    'no', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'es', 'sv',
-    'tr', 'vi', 'la',
-];
-
 
 async function LerTexto(comando, context, client) {
     let lang = 'pt';
@@ -46,16 +35,14 @@ async function LerTexto(comando, context, client) {
     }
 
     //testar habilitação para escolha de linguas diferentes
-
     try {
-        gtts = new gTTS(texto, lang);
+        const gtts = new gTTS(texto, lang);
         const audioDir = `${__dirname}/../recursos/audio.mp3`;
         gtts.save(audioDir, () => {
             console.log("> Texto Convertido com sucesso!");
         });
 
-        await TocarSom(); // roda o áudio obtido da mensagem
-
+        await TocarSom();
 
     } catch (err) {
         client.say(client.channels[0], `Poxa ${context.username}, não conheço essa língua que você escolheu!`);
@@ -67,9 +54,29 @@ async function TocarSom() {
     const audioDir = `${__dirname}/../recursos/audio.mp3`;
 
     try {
-        player.play(audioDir, function (err) {
-            if (err) throw err
-        })
+        await exec(`killall audacious`, (err, stdout, stderr) => {
+            if (err) {
+                console.error(`Error executing command: ${err.message}`);
+                return;
+            }
+            if (stderr) {
+                console.error(`Command stderr: ${stderr}`);
+                return;
+            }
+        });
+        setTimeout(() => {
+            exec(`audacious -Q ${audioDir}`, (err, stdout, stderr) => {
+                if (err) {
+                    console.error(`Error executing command: ${err.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.error(`Command stderr: ${stderr}`);
+                    return;
+                }
+            });
+        }, 1000);
+
         console.log("> Áudio tocado com sucesso!");
     } catch (error) {
         console.log('> Erro ao tocar o som.');
