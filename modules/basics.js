@@ -14,17 +14,7 @@ function basicMsgs(target, mensagem, comando, client) {
         ],
         [
             aliases = ["comandos", "cmds", "comandos", "cmd"],
-            resposta = `Command list:  (use after !) uptime, watchtime, top, donation, mesetas, pix, socials, site, prime, tts, and there are easter egg commands!`
-        ],
-        [
-            aliases = ["hub"],
-            resposta = `https://discord.gg/ahubtech`
-
-        ],
-        [
-            aliases = ["brstreamers"],
-            resposta = `https://brstreamers.dev/`
-
+            resposta = `Command list:  (use after !) uptime, watchtime, top, donation, mesetas, pix, socials, site, prime, tts, ttslist, and there are easter egg commands!`
         ],
 
         //add new basic messages (just Question and Answer) ...

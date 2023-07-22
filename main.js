@@ -12,8 +12,6 @@ const tts = require('./modules/tts');
 const anota = require('./modules/anota');
 const basics = require('./modules/basics');
 
-var ad_start = false; //Habilita/Desabilita ads automaticos
-
 var BOT_USERNAME = 'vilelabot'
 var CHANNEL_NAME = 'vilelalabs' //'wikiknow'
 var OAUTH_TOKEN = auth.getAuth('twitch');
@@ -51,13 +49,6 @@ client.connect();
 
 function onMessageHandler(target, context, msg, self) {
 
-    //para rodar ads automaticamente
-    /*if (ad_start) {
-        ad.RodarAd(30, 60);
-        console.log('Iniciando ads automaticos');
-        ad_start = false;
-    }*/
-
     if (self) {
         return;
     }
@@ -94,7 +85,6 @@ function onMessageHandler(target, context, msg, self) {
 function onConnectedHandler(addr, port) {
     try {
         console.log(`* Connected to ${addr}:${port}`);
-        ad_start = true;
         sh.startSH();
     } catch (error) {
         console.log("Erro ao conectar. ERRO:", error);

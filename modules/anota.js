@@ -5,7 +5,6 @@ exports.apagaAnotacoes = apagaAnotacoes;
 
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./recursos/anota.db');
-//var db = new sqlite3.Database(':memory:');
 
 function addAnotacao(target, username, mensagem, client) {
 
@@ -15,16 +14,11 @@ function addAnotacao(target, username, mensagem, client) {
         if (anotacao.length > 0) {
 
             db.serialize(function () {
-                //CRIA TABELA se ainda não existir
                 db.run("CREATE TABLE IF NOT EXISTS anota (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT ,info TEXT)");
-
-                //INSERE NOVOS VALORES NA TABELA
                 db.run(`INSERT INTO anota (user,info) VALUES ('${username}','${anotacao}')`);
-
             });
 
             client.say(target, `Valeu! Incluí sua dica na minha lista de anotações!`);
-
         }
     }
 }
@@ -47,21 +41,35 @@ function lerAnotacoes(username, mensagem) {
         });
     }
 }
+
 function apagaAnotacoes(username, mensagem) {
     if (username !== 'vilelalabs')
         return;
     // faz tratamento da mensagem
-    comando = mensagem.substring(0, 11);
-    if (comando === `!apaganota `) {
-        let id = mensagem.substring(11);
-        if (id.length > 0) {
+    const comando = mensagem.substring(0, 11);
+    if (comando === `!apaganota ` || comando === `!apaganotas`) {
+        const id = mensagem.substring(11).trim();
+        const commaIndex = mensagem.indexOf(',');
+        const start = mensagem.substring(11, commaIndex).trim();
 
+        let end;
+        if (commaIndex > 0)
+            end = mensagem.substring(commaIndex + 1).trim();
+
+        console.log(`start: ${start} | end: ${end}`);
+        if (id.length > 0) {
+            if (end) {
+                db.run(`DELETE FROM anota WHERE rowid BETWEEN ${start} AND ${end}`);
+                console.log(`Apagou as anotações de ${start} a ${end}`);
+                return;
+            }
 
             db.run(`DELETE FROM anota WHERE rowid = ${id}`);
             console.log(`Apagou a anotação ${id}`);
         }
     }
 }
+
 
 function closeDB() {
     db.close();
