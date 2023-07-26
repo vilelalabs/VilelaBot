@@ -56,7 +56,6 @@ function apagaAnotacoes(username, mensagem) {
         if (commaIndex > 0)
             end = mensagem.substring(commaIndex + 1).trim();
 
-        console.log(`start: ${start} | end: ${end}`);
         if (id.length > 0) {
             if (end) {
                 db.run(`DELETE FROM anota WHERE rowid BETWEEN ${start} AND ${end}`);
